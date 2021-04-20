@@ -1,0 +1,57 @@
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Halide detected current CMake target:  x86-64-linux
+-- Halide using default generator target: host
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - yes
+-- Found Threads: TRUE  
+-- Could NOT find OpenGL (missing: OPENGL_opengl_LIBRARY OPENGL_glx_LIBRARY OPENGL_INCLUDE_DIR) 
+-- Found OpenMP_C: -fopenmp (found version "4.5") 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- Found LLVM 11.0.0
+-- Using LLVMConfig.cmake in: /home/nassim/projects/llvm-install/lib/cmake/llvm
+-- Disabling AArch64 backend
+-- Disabling AMDGPU backend
+-- Disabling ARM backend
+-- Disabling Hexagon backend
+-- Disabling Mips backend
+-- Disabling NVPTX backend
+-- Disabling PowerPC backend
+-- Disabling RISCV backend
+-- Disabling WebAssembly backend
+-- Enabling X86 backend
+-- Compiling Halide WITH RTTI.
+-- Compiling Halide WITH exceptions.
+-- Could NOT find JPEG (missing: JPEG_LIBRARY JPEG_INCLUDE_DIR) 
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Could NOT find PNG (missing: PNG_LIBRARY PNG_PNG_INCLUDE_DIR) 
+-- Performing Test LINKER_HAS_FLAG_VERSION_SCRIPT
+-- Performing Test LINKER_HAS_FLAG_VERSION_SCRIPT - Success
+-- Building autoschedulers enabled
+-- Building tests enabled
+-- Building Python bindings enabled
+-- Found Python3: /usr/bin/python3.6 (found version "3.6.9") found components: Interpreter Development Development.Module Development.Embed 
+-- pybind11 v2.6.2 
+-- Performing Test HAS_FLTO
+-- Performing Test HAS_FLTO - Success
+-- Building tutorials enabled
+-- Building docs disabled
+-- Building utils enabled
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/nassim/projects/Halide/build
