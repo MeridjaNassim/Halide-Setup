@@ -12,7 +12,7 @@
 #define UPPER_BOUND 12
 #define LOWER_BOUND 0
 
-
+/// helper function to print the configuration to a file
 void writeConfigToFile(char * filaname,int size,int alpha,Halide::Buffer<int> vectorX,Halide::Buffer<int> vectorY){
     std::ofstream savefile;
     savefile.open(filaname);
@@ -30,6 +30,7 @@ void writeConfigToFile(char * filaname,int size,int alpha,Halide::Buffer<int> ve
         }
         savefile.close();
 }
+// helper function to save results
 void saveResults(char * filaname,Halide::Buffer<int> res){
     std::ofstream savefile;
     savefile.open(filaname);
@@ -53,7 +54,6 @@ int main(int argc, char const *argv[])
     int useRandom = 1;
     // variables to fill the objects
     Halide::Var sizeFill;
-    // Pipeline to fill the matrixes
     Halide::Func fillVectX,fillVectY;
     if(useRandom)
     {
@@ -63,18 +63,18 @@ int main(int argc, char const *argv[])
     
     }
 
-    // Add parallalisation using the x_fill to the Halide fillMatrix pipline
+    // Add parallalisation
     fillVectX.parallel(sizeFill);
     fillVectY.parallel(sizeFill);
     clock_t initstart = clock();
-    //Declare and initialize the buffers of matrices
+    //Declare and initialize the buffers of vectors
     Halide::Buffer<int> vectorX = fillVectX.realize(size);
     Halide::Buffer<int> vectorY = fillVectY.realize(size);
     
     writeConfigToFile("./data/config.txt",size,alpha,vectorX,vectorY);
     clock_t initend = clock();
     std::cout << "Init took : " << (initend - initstart) << " clock cycles" <<std::endl; 
-    /// printing tha matrices
+    /// printing the vectors
     int debug = 1;
     if(debug)
     {
@@ -92,14 +92,13 @@ int main(int argc, char const *argv[])
     } 
     std::cout << std::endl;
     
-    // Add definition to the Halide gemv pipline
+    /// the implementation of axpy
     Halide::Var Y;
     Halide::Func axpy;
     axpy(Y) = alpha *  vectorX(Y)  +  vectorY(Y);
     axpy.parallel(Y);
     clock_t execStart = clock();
-    
-     // executing the gemv pipeline and saving the results in the reslut buffer
+    /// executing axpy 
     Halide::Buffer<int> result = axpy.realize(size);
     clock_t execEnd = clock();
     std::cout << "Exec took : " << (execEnd - execStart) << " clocks cycles" <<std::endl; 

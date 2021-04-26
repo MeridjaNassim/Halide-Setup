@@ -9,11 +9,13 @@
 #define SIZE 4
 #define UPPER_BOUND 12
 #define LOWER_BOUND 0
+/// helper function to generate random ints between lower and upper
 void fillRandomInt(int * adr,int lower,int upper)
 {
     int r = rand() % (upper - lower +1) + lower;
     *adr = r;
 }
+/// parses a string sequence of number into a vector of size (size)
 void parseVect(const char *str, int * vect,int size)
 {
     std::string st = str; 
@@ -27,6 +29,7 @@ void parseVect(const char *str, int * vect,int size)
         i ++;
     }
 }
+/// reads a configuration from file
 void readFromConfig(char * filename,int * size , int*alpha,int** vectX,int**vectY)
 {
     std::ifstream configFile;
@@ -55,6 +58,7 @@ void readFromConfig(char * filename,int * size , int*alpha,int** vectX,int**vect
     }
     configFile.close();
 }
+// saves results to a file
 void saveResults(char * filaname,int* res,int size){
     std::ofstream savefile;
     savefile.open(filaname);
@@ -64,7 +68,7 @@ void saveResults(char * filaname,int* res,int size){
         }
         savefile.close();
 }
-
+// implementation of axpy
 void axpy(int alpha, int* vectx,int* vecty,int* res,int size) 
 {
     for (size_t i = 0; i < size; i++)
@@ -73,6 +77,7 @@ void axpy(int alpha, int* vectx,int* vecty,int* res,int size)
     }
     
 }
+/// helper function to print
 void printVect(int * vect, int size, char * title)
 {
     std::cout << title << std::endl;
